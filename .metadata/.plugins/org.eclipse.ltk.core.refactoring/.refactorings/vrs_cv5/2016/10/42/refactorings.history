@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;vrs_cv5/src/vrs_cv.c&apos; to &apos;vrs_cv5.c&apos;" description="Rename resource &apos;vrs_cv.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/vrs_cv.c" name="vrs_cv5.c" stamp="1476778514710" updateReferences="true"/>
+</session>
