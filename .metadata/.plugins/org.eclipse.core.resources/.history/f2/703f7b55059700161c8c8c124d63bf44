@@ -15,12 +15,13 @@ int main(void)
 	while(!ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC)){}
 	ADC_ClearFlag(ADC1, ADC_FLAG_EOC);
 
+	char hodnota[10];
 	while (1)
 	{
 		for(int i = 0; i <= 10000; i++){
 		}
 		if (pom == 1){
-			posli_znak((char)(3.3/4095)*AD_value);
+			posli_znak((3.3/4095)*AD_value);
 		}
 		else{
 			posli_znak(AD_value);

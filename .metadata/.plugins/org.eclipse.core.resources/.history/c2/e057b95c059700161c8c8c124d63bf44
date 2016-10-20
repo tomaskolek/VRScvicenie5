@@ -15,6 +15,7 @@ int main(void)
 	while(!ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC)){}
 	ADC_ClearFlag(ADC1, ADC_FLAG_EOC);
 
+	char hodnota[10];
 	while (1)
 	{
 		for(int i = 0; i <= 10000; i++){
