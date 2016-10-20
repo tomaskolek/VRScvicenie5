@@ -7,7 +7,11 @@ int main(void)
 {
 	NVIC_init();
 	adc_init();
-	USART_init();
+//	USART_init();
+
+	 ADC_SoftwareStartConv(ADC1);
+	  while(!ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC)){}
+	  ADC_ClearFlag(ADC1, ADC_FLAG_EOC);
 
 	int i = 0;
 	while (1)
