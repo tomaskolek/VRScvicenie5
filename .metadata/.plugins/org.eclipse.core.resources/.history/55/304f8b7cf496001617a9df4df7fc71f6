@@ -78,7 +78,7 @@ void nvic_init(){			// inicializacia prerusenia pre ADC a USART2
 }
 
 void usart_init(){			// inicalizujem USART2
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART2, ENABLE);
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART2, ENABLE);
 	USART_InitTypeDef USART_struktura;
 	USART_struktura.USART_BaudRate = 9600;
 	USART_struktura.USART_WordLength = USART_WordLength_8b;
@@ -96,7 +96,7 @@ void ADC1_IRQHandler(void){		//handler k ADC
 	ADC_ClearITPendingBit(ADC1, ADC_IT_EOC);
 }
 
-void blikamLEDku(){			//funkcia, ktora reprezentuje urovne napatia zmenou frekvencie blikania LED
+void blikamLEDku(){			//funkcia, ktora reprezuntuje urovne napatia zmenou frekvencie blikania LED
 	int i, j;
 	uint16_t AD_value;
 

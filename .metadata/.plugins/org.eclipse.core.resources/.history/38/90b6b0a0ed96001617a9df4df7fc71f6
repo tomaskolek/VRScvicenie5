@@ -8,7 +8,7 @@ int main(void)
 	nvic_init();
 	gpio_init();
 	adc_init();
-	usart_init();
+//	USART_init();
 
 	 ADC_SoftwareStartConv(ADC1);
 	  while(!ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC)){}

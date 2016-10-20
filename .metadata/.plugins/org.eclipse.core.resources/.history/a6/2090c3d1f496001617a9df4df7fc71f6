@@ -96,7 +96,7 @@ void ADC1_IRQHandler(void){		//handler k ADC
 	ADC_ClearITPendingBit(ADC1, ADC_IT_EOC);
 }
 
-void blikamLEDku(){			//funkcia, ktora reprezentuje urovne napatia zmenou frekvencie blikania LED
+void blikamLEDku(){			//funkcia, ktora reprezuntuje urovne napatia zmenou frekvencie blikania LED
 	int i, j;
 	uint16_t AD_value;
 

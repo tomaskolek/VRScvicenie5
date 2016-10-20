@@ -8,7 +8,7 @@
 #include <stddef.h>
 #include "stm32l1xx.h"
 
-void gpio_init(){			// inicalizujem GPIO piny
+void gpio_init(){
 
   	GPIO_InitTypeDef GPIO_InitStructure;
 
@@ -59,7 +59,7 @@ void adc_init(void)			// inicalizujem ADC
   	ADC_SoftwareStartConv(ADC1);
   }
 
-void nvic_init(){			// inicializacia prerusenia pre ADC a USART2
+void nvic_init(){
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);
 
 	NVIC_InitTypeDef NVIC_InitStructure;
@@ -70,15 +70,15 @@ void nvic_init(){			// inicializacia prerusenia pre ADC a USART2
 	NVIC_Init(&NVIC_InitStructure);
 
 	NVIC_InitTypeDef NVIC_InitStructure2;
-	NVIC_InitStructure2.NVIC_IRQChannel = USART2_IRQn;
+	NVIC_InitStructure2.NVIC_IRQChannel = USART1_IRQn;
 	NVIC_InitStructure2.NVIC_IRQChannelPreemptionPriority = 1;
 	NVIC_InitStructure2.NVIC_IRQChannelSubPriority = 0;
 	NVIC_InitStructure2.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_InitStructure2);
 }
 
-void usart_init(){			// inicalizujem USART2
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART2, ENABLE);
+void usart_init(){
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);
 	USART_InitTypeDef USART_struktura;
 	USART_struktura.USART_BaudRate = 9600;
 	USART_struktura.USART_WordLength = USART_WordLength_8b;
@@ -86,17 +86,18 @@ void usart_init(){			// inicalizujem USART2
 	USART_struktura.USART_Parity = USART_Parity_No;
 	USART_struktura.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
 	USART_struktura.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
-	USART_Init(USART2, &USART_struktura);
-	USART_ITConfig(USART2, USART_IT_RXNE, ENABLE);
-	USART_Cmd(USART2, ENABLE);
+	USART_Init(USART1, &USART_struktura);
+	USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);
+	USART_Cmd(USART1, ENABLE);
+
 }
 
-void ADC1_IRQHandler(void){		//handler k ADC
+void ADC1_IRQHandler(void){
 	blikamLEDku();
 	ADC_ClearITPendingBit(ADC1, ADC_IT_EOC);
 }
 
-void blikamLEDku(){			//funkcia, ktora reprezentuje urovne napatia zmenou frekvencie blikania LED
+void blikamLEDku(){
 	int i, j;
 	uint16_t AD_value;
 
@@ -134,10 +135,5 @@ void blikamLEDku(){			//funkcia, ktora reprezentuje urovne napatia zmenou frekve
 		else if ((AD_value >= 3900)){
 			GPIO_ResetBits(GPIOA, GPIO_Pin_5);
 		}
-
-}
-
-void USART2_IRQHandler(){		// handler k USART2
-
 
 }
