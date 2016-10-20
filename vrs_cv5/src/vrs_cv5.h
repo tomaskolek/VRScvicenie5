@@ -9,6 +9,9 @@
 #define VRS_CV5_H_
 
 void adc_init(void);
+void NVIC_init();
+void USART_init();
+void blikamLEDku();
 
 #endif /* VRS_CV5_H_ */
 
