@@ -1,8 +1,6 @@
 #include <stddef.h>
 #include "stm32l1xx.h"
 #include "vrs_cv5.h"
-#include <stdio.h>
-
 //#include <string.h>
 
 int main(void)
@@ -11,8 +9,6 @@ int main(void)
 	gpio_init();
 	adc_init();
 	usart_init();
-
-	char naPoslanie[20];
 
 	ADC_ITConfig(ADC1, ADC_IT_EOC, ENABLE);
 	ADC_SoftwareStartConv(ADC1);
@@ -24,12 +20,13 @@ int main(void)
 		for(int i = 0; i <= 10000; i++){
 		}
 		if (pom == 1){
-			sprintf(naPoslanie,"%f\r\n", (3.3/4095)*AD_value);
+			char naPoslanie[];
+			itoa((3.3/4095)*AD_value, naPoslanie,10);
+			posli_znak(naPoslanie);
 		}
 		else{
-			sprintf(naPoslanie,"%i\r\n", AD_value);
+			posli_znak(AD_value);
 		}
-		posli_znak(naPoslanie);
 	}
 	return 0;
 }

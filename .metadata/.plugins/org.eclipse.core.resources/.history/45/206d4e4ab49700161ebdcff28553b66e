@@ -1,8 +1,6 @@
 #include <stddef.h>
 #include "stm32l1xx.h"
 #include "vrs_cv5.h"
-#include <stdio.h>
-
 //#include <string.h>
 
 int main(void)
@@ -25,11 +23,12 @@ int main(void)
 		}
 		if (pom == 1){
 			sprintf(naPoslanie,"%f\r\n", (3.3/4095)*AD_value);
+			posli_znak(naPoslanie);
 		}
 		else{
 			sprintf(naPoslanie,"%i\r\n", AD_value);
+			posli_znak(AD_value);
 		}
-		posli_znak(naPoslanie);
 	}
 	return 0;
 }

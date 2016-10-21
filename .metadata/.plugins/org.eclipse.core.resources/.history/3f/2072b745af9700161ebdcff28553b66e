@@ -1,16 +1,32 @@
 #include <stddef.h>
 #include "stm32l1xx.h"
 #include "vrs_cv5.h"
-
+//#include <string.h>
 
 int main(void)
 {
-  int i = 0;
-  while (1)
-  {
-	i++;
-  }
-  return 0;
+	nvic_init();
+	gpio_init();
+	adc_init();
+	usart_init();
+
+	ADC_ITConfig(ADC1, ADC_IT_EOC, ENABLE);
+	ADC_SoftwareStartConv(ADC1);
+	while(!ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC)){}
+	ADC_ClearFlag(ADC1, ADC_FLAG_EOC);
+
+	while (1)
+	{
+		for(int i = 0; i <= 10000; i++){
+		}
+		if (pom == 1){
+			posli_znak((char)(3.3/4095)*AD_value);
+		}
+		else{
+			posli_znak(AD_value);
+		}
+	}
+	return 0;
 }
 
 
