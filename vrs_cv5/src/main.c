@@ -5,20 +5,14 @@
 
 //#include <string.h>
 
+
 int main(void)
 {
 	nvic_init();
 	gpio_init();
 	adc_init();
-	usart_init();
-
-	char naPoslanie[20];
-
-	ADC_ITConfig(ADC1, ADC_IT_EOC, ENABLE);
-	ADC_SoftwareStartConv(ADC1);
-	while(!ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC)){}
-	ADC_ClearFlag(ADC1, ADC_FLAG_EOC);
-
+	//usart_init();
+/*
 	while (1)
 	{
 		for(int i = 0; i <= 10000; i++){
@@ -30,6 +24,9 @@ int main(void)
 			sprintf(naPoslanie,"%i\r\n", AD_value);
 		}
 		posli_znak(naPoslanie);
+	}*/
+	while (1){
+		blikamLEDku(AD_value);
 	}
 	return 0;
 }

@@ -8,14 +8,15 @@
 #ifndef VRS_CV5_H_
 #define VRS_CV5_H_
 
-int AD_value;
+
 int pom;
 char data;
+volatile int AD_value;
 
 void adc_init(void);
 void nvic_init();
 void usart_init();
-void blikamLEDku();
+void blikamLEDku(volatile int);
 void ADC1_IRQHandler(void);
 void gpio_init();
 void USART2_IRQHandler();
