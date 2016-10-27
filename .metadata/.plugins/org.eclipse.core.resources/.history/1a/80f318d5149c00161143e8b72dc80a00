@@ -7,18 +7,17 @@
 volatile int AD_value;
 
 void ADC1_IRQHandler(void){		//handler k ADC
-	if(ADC1->SR & ADC_SR_EOC){
+	if (ADC1->SR & ADC_SR_EOC) {
 		AD_value = ADC1->DR;
 	}
 }
 
 int main(void)
 {
-	adc_init();
 	gpio_init();
+	adc_init();
 	nvic_init();
 	//usart_init();
-	ADC_ITConfig(ADC1,ADC_IT_EOC,ENABLE);
 /*
 	while (1)
 	{

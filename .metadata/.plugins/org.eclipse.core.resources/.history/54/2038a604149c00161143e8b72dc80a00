@@ -11,12 +11,13 @@
 
 int pom;
 char data;
+volatile int AD_value;
 
 void adc_init(void);
 void nvic_init();
 void usart_init();
 void blikamLEDku(volatile int);
-//void ADC1_IRQHandler(void);
+void ADC1_IRQHandler(void);
 void gpio_init();
 void USART2_IRQHandler();
 void posli_znak(char znak[]);

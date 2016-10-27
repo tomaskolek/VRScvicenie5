@@ -22,18 +22,18 @@ void gpio_init(){			// inicalizujem GPIO piny
   	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
   	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_40MHz;
   	//// USART2
-  	/*GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2 | GPIO_Pin_3;
+  	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2 | GPIO_Pin_3;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
 	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
 	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_40MHz;
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
 	GPIO_PinAFConfig(GPIOA,GPIO_PinSource2,GPIO_AF_USART2);
-	GPIO_PinAFConfig(GPIOA,GPIO_PinSource3,GPIO_AF_USART2);*/
+	GPIO_PinAFConfig(GPIOA,GPIO_PinSource3,GPIO_AF_USART2);
   		/////
   	GPIO_Init(GPIOA, &GPIO_InitStructure);
-  	//RCC_HSICmd(ENABLE);
-  	//while(RCC_GetFlagStatus(RCC_FLAG_HSIRDY) == RESET);
+  	RCC_HSICmd(ENABLE);
+  	while(RCC_GetFlagStatus(RCC_FLAG_HSIRDY) == RESET);
 
 }
 
@@ -75,7 +75,7 @@ void nvic_init(){			// inicializacia prerusenia pre ADC a USART2
 	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_InitStructure);
-	/*NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
+	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
 	NVIC_InitTypeDef NVIC_InitStructure2;
 	NVIC_InitStructure2.NVIC_IRQChannel = USART2_IRQn;
 	NVIC_InitStructure2.NVIC_IRQChannelPreemptionPriority = 1;
@@ -83,7 +83,7 @@ void nvic_init(){			// inicializacia prerusenia pre ADC a USART2
 	NVIC_InitStructure2.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_InitStructure2);
 	USART_ITConfig(USART2, USART_IT_RXNE, ENABLE);
-	USART_Cmd(USART2, ENABLE);*/
+	USART_Cmd(USART2, ENABLE);
 }
 
 void usart_init(){			// inicalizujem USART2

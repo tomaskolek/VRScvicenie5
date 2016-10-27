@@ -14,11 +14,10 @@ void ADC1_IRQHandler(void){		//handler k ADC
 
 int main(void)
 {
-	adc_init();
 	gpio_init();
+	adc_init();
 	nvic_init();
 	//usart_init();
-	ADC_ITConfig(ADC1,ADC_IT_EOC,ENABLE);
 /*
 	while (1)
 	{

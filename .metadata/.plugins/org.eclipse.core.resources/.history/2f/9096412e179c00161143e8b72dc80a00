@@ -18,7 +18,6 @@ int main(void)
 	gpio_init();
 	nvic_init();
 	//usart_init();
-	ADC_ITConfig(ADC1,ADC_IT_EOC,ENABLE);
 /*
 	while (1)
 	{
